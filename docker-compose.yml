@@ -1,0 +1,26 @@
+version: "3.8"
+volumes:
+  postgres_data:
+services:
+  postgres:
+    image: postgres
+    restart: always
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: secretpass
+      POSTGRES_USER: gulag
+      POSTGRES_DB: gulag
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql:/opt/sql
+  console:
+    image: dpage/pgadmin4
+    restart: always
+    container_name: pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: gulag@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: gulagroot
+    ports:
+      - 80:80
