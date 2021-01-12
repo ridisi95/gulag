@@ -1,9 +1,11 @@
 package com.gulag.repos;
 
-import com.gulag.entity.User;
-import org.springframework.data.repository.CrudRepository;
+import com.gulag.entity.UserEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UsersRepository extends CrudRepository<User, Long> {
+import java.util.Optional;
 
-    User findByUsername(String username);
+public interface UsersRepository extends JpaRepository<UserEntity, Long> {
+
+    Optional<UserEntity> findByUsername(String username);
 }

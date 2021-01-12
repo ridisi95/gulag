@@ -2,6 +2,7 @@ package com.gulag.config;
 
 import com.gulag.entity.Role;
 import com.gulag.services.AuthUserService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -15,11 +16,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Slf4j
 @Configuration
+@RequiredArgsConstructor
 @EnableConfigurationProperties
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private AuthUserService auth;
+    private final AuthUserService auth;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
