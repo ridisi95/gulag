@@ -1,0 +1,37 @@
+server:
+  port: 8080
+  shutdown: graceful
+  servlet:
+    context-path: /api
+
+spring:
+  data:
+    rest:
+      default-page-size: 3
+  datasource:
+    url: jdbc:postgresql://${db.host:localhost}:5432/gulag?currentSchema=public&stringtype=unspecified
+    username: ${db.username:gulag}
+    password: ${db.password:secretpass}
+#    username: ${db.username:postgres}
+#    password: ${db.password:postgres}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL94Dialect
+        default_schema: public
+        order_by.default_null_ordering: last
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true # set false for production
+    hibernate.ddl-auto: validate
+  flyway:
+    enabled: true
+    check-location: true
+    locations: classpath:migrations
+    mixed: true
+
+# Env variables
+application:
+  # CORS configs from previous project, might be useful :)
+  allowed-http-methods: HEAD,GET,PUT,POST,DELETE,PATCH,OPTIONS
+  allowed-headers: Authorization,Content-Type,Accept,Cache-Control
+  cors-urls: '*'

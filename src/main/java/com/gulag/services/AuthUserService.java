@@ -27,7 +27,7 @@ public class AuthUserService implements UserDetailsService {
                 new UsernameNotFoundException("User not found"));
         log.info(userEntity.toString());
         List<SimpleGrantedAuthority> authorities =
-                Collections.singletonList(new SimpleGrantedAuthority(userEntity.getRoleName()));
+                Collections.singletonList(new SimpleGrantedAuthority(userEntity.getRole().getName()));
         return new User(userEntity.getUsername(), userEntity.getPassword(), authorities);
     }
 }

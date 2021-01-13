@@ -1,6 +1,6 @@
-package com.gulag.entity;
+package com.gulag.enums;
 
-public enum Role {
+public enum UserRole {
     ADMIN, MANAGER, USER, GUEST;
 
     public String getName() {
