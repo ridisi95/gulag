@@ -1,0 +1,72 @@
+//=================обнуления==============================================================================================================================================================================================================
+*{padding: 0;margin: 0;border: 0;}
+*,*:before,*:after{-moz-box-sizing: border-box;-webkit-box-sizing:border-box; box-sizing: border-box;}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+nav,footer,header,aside{display: block;}
+html,body{height: 100%;width: 100%;font-size: 100%; line-height:1; font-size: 14px; -ms-text-size-adjust:100%; -moz-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;}
+input,button,textarea{font-family: inherit;}
+a,a:visited{text-decoration: none;}
+body{margin:0;padding: 0;}
+h1,h2,h3,h4,h5,h6,p,img{ padding: 0; margin: 0; font-size:14px;font-weight: inherit;}
+ul li{list-style: none; padding: 0;margin:0; display: block;}
+a{text-decoration: none; padding: 0; margin:0; display: block;}
+button{cursor: pointer;padding:0;margin: 0;border:0;}
+input::-ms-clear{display: none;}
+button::-moz-focus-inner{padding:0;border:0;}
+img{vertical-align: top;}
+//=================   Шрифты    ==============================================================================================================================================================================================================
+@import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+//================   Основной Шрифт    =================================================================================================================================================================================================
+body{font-family:Play; font-weight: 700}
+//================  Переменные Брэйкпоинты  ===========================================================================================================================================================================================
+$md1:991px;
+$md2:767px;
+$md3:575px;
+//==============================   Основная сетка БрейкПоинтов   ======================================================================================================================================================================
+.container{
+	max-width: 1200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+	padding: 0px 10px 0px 10px;
+	@media (max-width: $md1){
+		max-width: 720px;	
+	}
+	@media (max-width: $md2){
+		max-width: 550px;	
+	}
+	@media (max-width: $md3){
+		max-width: 100%;
+		padding: 0 5px 0 5px;
+	}
+}
+//==============================   Стили для ".ibg" тот что JQ   ======================================================================================================================================================================
+.ibg{
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+}
+	.ibg img{
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	visibility: hidden;
+}
+//==============================  Миксины  ===========================================================================================================================================================================================
+	//Миксин Адаптивного Шрифта
+$maxWidth: 1000; //  Ширина всего полотна макета (не контейнера)....указывать без PX
+@mixin adaptiv-font($pcSize, $mobSize) {
+ $addSize: $pcSize - $mobSize;
+ $maxWidth: $maxWidth - 320; //Минимальная ширина Въюпорта
+ font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+// Как использовать?
+	//Вставляем @include adaptiv-font(40//размер шрифта по макету,указываем без PX,18//Минимальный размер шрифта);

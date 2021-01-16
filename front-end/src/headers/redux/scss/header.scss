@@ -1,0 +1,276 @@
+@import "";
+header{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 20px 0px 20px 0px;
+  z-index: 50;
+}
+header::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #060606;
+  z-index: 20;
+  border-bottom: 1px solid rgb(90, 90, 90);
+}
+.header__container{
+  max-width: 1200px;
+  margin: 0 auto;
+  @media (max-width: 1215px){
+    padding: 0px 20px 0px 20px;
+  }
+  @media (max-width: 500px){
+    padding: 0px 5px 0px 5px;
+  }
+}
+.header__content{
+  display: flex;
+  justify-content: space-between;
+}
+.header__menu{
+  display: flex;
+  align-items: center;
+  z-index: 20;
+}
+.logo{
+  z-index: 20;
+  a{
+    font-family: "Hanalei Fill";
+    color: #fff;
+    font-size: 40px;
+    letter-spacing: 26px;
+
+  }
+}
+//todo ============   Client    ===========
+.header__client{
+  margin: 0px 20px 0px 0px;
+  a{
+    font-family: Play;
+    color: #a0a0a0;
+    @include adaptiv-font(12,8);
+    transition: .5s ease;
+  }
+  a:hover{
+    color: #f1570f;
+  }
+}
+//todo ============   search__icon   ===========
+.header__search{
+  position: relative;
+  width: 80px;
+  height: 40px;
+  overflow: hidden;
+}
+.search__icon{
+  position: absolute;
+  top: 12px;
+  right: 50px;
+  width: 18px;
+  height: 18px;
+  fill: #fff;
+  transition: .6s ease;
+  cursor: pointer;
+  z-index: 2;
+  transition: 1s ease 0.11s;
+}
+.search__icon:hover{
+  fill: #2a88c7;
+}
+.header__form{
+  position: absolute;
+  transform: translate(350px,0);
+  top: 7px;
+  right: -71px;
+  z-index: 1;
+  transition: 1s ease;
+  input{
+    padding: 5px 10px 5px 25px;
+    width: 250px;
+    color: #fff;
+    background-color: #282828;
+    border: 1px solid #404040;
+    transition: .4s ease;
+    z-index: 0;
+  }
+  input:hover{
+    border: 1px solid #6e6d6d;
+  }
+  input:focus{
+    border: 1px solid #1f8ad1;
+  }
+}
+//!! ==== add Class "Click" ====
+.header__search.active{
+  position: relative;
+  width: 298px;
+  height: 40px;
+}
+.search__icon.active{
+  transform: translate(-207px,0);
+}
+.header__form.active{
+  transform: translate(-100px,0);
+}
+//todo ============   header__register   ===========
+.header__register{
+  button{
+    padding: 10px 10px 10px 10px;
+    border-radius: 2px;
+    font-family: Play;
+    @include adaptiv-font(12,8);
+    color: #fff;
+    background-color: rgb(255, 85, 0);
+    transition: .6s ease;
+    margin: 0px 50px 0px 0px;
+    @media (max-width: 1200px){
+      margin: 0px 20px 0px 0px;
+    }
+  }
+  button:hover{
+    background-color: #2a88c7;
+  }
+}
+//todo ============   header__login   ===========
+.header__login{
+  button{
+    padding: 10px 10px 10px 10px;
+    border-radius: 2px;
+    border: 1px solid #404040;
+    font-family: Play;
+    @include adaptiv-font(12,8);
+    color: #fff;
+    background-color: transparent;
+    transition: .6s ease;
+  }
+  button:hover{
+    border: 1px solid #555454;
+  }
+}
+//?? ================== Mobile =================================================
+.menu__burger{
+  display: none;
+}
+@media (max-width: 1000px){
+  .header__login{
+    margin: 0px 20px 30px 0px;
+    button{
+      font-size: 20px;
+      padding: 10px 30px 10px 30px;
+    }
+  }
+  .header__register{
+    margin: 0px 0px 30px 0px;
+    button{
+      font-size: 20px;
+      padding: 10px 30px 10px 30px;
+    }
+  }
+  .header__client{
+    margin: 0px 10px 0px 0px;
+    a{
+      font-size: 20px;
+    }
+  }
+  .header__content{
+    justify-content: space-around;
+  }
+  // !! ========================= Burger Menu ============================
+  .menu__burger{
+    display: block;
+    position: relative;
+    top: 22px;
+    left: 0;
+    width: 20px;
+    height: 2px;
+    cursor: pointer;
+    z-index: 20;
+    .span__middle{
+      position: absolute;
+      background-color: #fff; //цвет средней линии (бургера)
+      left: 0%;
+      width: 100%;
+      height: 2px;
+      top: 0;
+      transition: 0.3s ease;
+      border-radius: 4px;
+    }
+    .span__up,
+    .span__down{
+      content: '';
+      background-color: #fff;//цвет первой и последней линии (бургера)
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      left: 0%;
+      border-radius: 4px;
+      transition: .4s ease;
+    }
+    .span__up{
+      top: -5px;
+    }
+    .span__down{
+      bottom: -5px;
+    }
+  }
+  .menu__burger.active{
+    z-index: 20;
+    .span__up,
+    .span__down{
+      content: '';
+      background-color:  rgb(255, 85, 0);
+      transition: .4s ease;
+    }
+    .span__middle{
+      transform: scale(0);
+    }
+    .span__up{
+      transform: rotate(45deg);
+      top: -0px;
+    }
+    .span__down{
+      transform: rotate(-45deg);
+      top: 0px;
+    }
+  }
+  .header__menu{
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    background-color: #3d3c3c;
+    transition: 1s ease;
+    padding: 20px 0px 20px 0px;
+    z-index: 1;
+    border-bottom: 1px solid rgb(90, 90, 90);
+  }
+  .header__menu.active{
+    top: 80px;
+  }
+  .header__menu{
+    display: flex;
+    flex-direction: column;
+  }
+  .header__login{
+    order: 1;
+    transform: translateX(10px);
+  }
+  .header__register{
+    order: 2;
+    transform: translateX(10px);
+  }
+  .header__client{
+    order: 3;
+    margin: 0px 0px 10px 0px;
+  }
+  .header__search{
+    order: 4;
+    transform: translateX(20px);
+  }
+}
