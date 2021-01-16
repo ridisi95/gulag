@@ -1,4 +1,8 @@
-import MainPage from '../pages/MainPage/MainPage'
+import Header from "./Header";
+import HeaderContainer from "./HeaderContainer";
+import HeaderContent from "./HeaderContent";
 export {
-    MainPage
+    Header,
+    HeaderContainer,
+    HeaderContent
 }

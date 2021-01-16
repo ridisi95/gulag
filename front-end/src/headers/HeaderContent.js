@@ -1,7 +1,10 @@
 import React from 'react';
+import { useHistory } from "react-router";
+import {Link} from "react-router-dom";
 
 const HeaderContent = () => {
-    onclick = () => {
+    const history = useHistory();
+    const onOpenSearch = () => {
         let search__icon = document.querySelector('#search__icon');
         let header__form = document.querySelector('#header__form');
         let header__search = document.querySelector('#header__search');
@@ -12,25 +15,27 @@ const HeaderContent = () => {
     return (
         <div className="header__content">
             <div className="header__logo logo">
-                <a href="#">GULAG</a>
+                <Link to={'/'} onClick={() => history.push('/')}>GULAG</Link>
             </div>
             <div className="header__menu" id="header__menu">
                 <div className="header__client">
-                    <a className="download__client" href="#">Скачать клиент</a>
+                    <Link to="#" onClick={''} className="download__client">Скачать клиент</Link>
                 </div>
-                <div onClick={onclick} className="header__search" id="header__search">
-                    <svg className="search__icon" id="search__icon"/>
+                <div onClick={onOpenSearch} className="header__search" id="header__search">
+                    <svg className="search__icon" id="search__icon">
+                        <use xlinkHref="#search"/>
+                    </svg>
                     <form className="header__form" action="#" id="header__form">
                         <input type="text" placeholder="Search"/>
                     </form>
                 </div>
                 <div className="header__register">
-                    <button className="btn__register">
+                    <button disabled={true} className="btn__register">
                         ЗАРЕГИСТРИРОВАТЬСЯ
                     </button>
                 </div>
                 <div className="header__login">
-                    <button className="btn__login">
+                    <button disabled={true} className="btn__login">
                         ВОЙТИ
                     </button>
                 </div>
