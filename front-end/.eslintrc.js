@@ -15,21 +15,5 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react'],
-  rules: {
-    indent: ['error', 2, { SwitchCase: 1 }],
-    'linebreak-style': 0,
-    quotes: ['error', 'single'],
-    semi: ['error', 'never'],
-    'comma-dangle': [
-      'error',
-      {
-        arrays: 'always-multiline',
-        objects: 'always-multiline',
-        imports: 'always-multiline',
-        exports: 'always-multiline',
-        functions: 'ignore',
-      },
-    ],
-    'no-console': 'off',
-  },
+  rules: {}
 }

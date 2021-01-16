@@ -1,16 +1,15 @@
-import React, { Component } from 'react'
-import './App.css'
+import React from 'react'
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {MainPage} from "./headers";
+import './app.scss';
 
-export default class App extends Component {
-  render() {
+const App = () => {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p> 
-            Welcome to the gulag
-          </p>
-        </header>
-      </div>
+        <Router>
+            <Switch>
+                <Route exact path="/" component={MainPage}/>
+            </Switch>
+        </Router>
     )
-  }
 }
+export default App;
