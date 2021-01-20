@@ -1,21 +1,12 @@
 import React from 'react';
-import HeaderContent from "./HeaderContent";
+import {useSelector} from "react-redux";
+import BurgerMenu from "./BurgerMenu";
 
 const HeaderContainer = () => {
-    const onOpenBurger = () => {
-        let menu__burger = document.querySelector('#menu__burger');
-        let header__menu = document.querySelector('#header__menu');
-        menu__burger.classList.toggle("active");
-        header__menu.classList.toggle("active");
-    }
+    const isBurgerMenuOpen = useSelector(state => state.header.isBurgerMenuOpen);
     return (
         <div className="header__container">
-            <div onClick={onOpenBurger} className="menu__burger burger" id="menu__burger">
-                <span className="span__up"/>
-                <span className="span__middle"/>
-                <span className="span__down"/>
-            </div>
-            <HeaderContent/>
+            <BurgerMenu isOpenBurgerMenu={!isBurgerMenuOpen}/>
         </div>
     )
 }

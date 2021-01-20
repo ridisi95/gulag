@@ -1,11 +1,14 @@
 import {A} from './header-actions'
 
 const default_header_state = {
-    openBurgerMenu: false
+    isBurgerMenuOpen: false
 }
 
 export const openBurgerMenuReducer = (current_state = {}, action = {}) => {
-    return Object.assign({}, current_state, {...current_state.openBurgerMenu, ...action.isOpen});
+    return {
+        ...current_state,
+        isBurgerMenuOpen: action.isOpen
+    }
 }
 export const header = (current_state = default_header_state, action = {}) => {
     switch (action.type) {

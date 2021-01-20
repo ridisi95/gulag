@@ -1,9 +1,7 @@
 import React from 'react';
-import { useHistory } from "react-router";
 import {Link} from "react-router-dom";
 
 const HeaderContent = () => {
-    const history = useHistory();
     const onOpenSearch = () => {
         let search__icon = document.querySelector('#search__icon');
         let header__form = document.querySelector('#header__form');
@@ -15,11 +13,11 @@ const HeaderContent = () => {
     return (
         <div className="header__content">
             <div className="header__logo logo">
-                <Link to={'/'} onClick={() => history.push('/')}>GULAG</Link>
+                <Link to={'/'}>GULAG</Link>
             </div>
             <div className="header__menu" id="header__menu">
                 <div className="header__client">
-                    <Link to="#" onClick={''} className="download__client">Скачать клиент</Link>
+                    <Link to="#" className="download__client">Скачать клиент</Link>
                 </div>
                 <div onClick={onOpenSearch} className="header__search" id="header__search">
                     <svg className="search__icon" id="search__icon">
