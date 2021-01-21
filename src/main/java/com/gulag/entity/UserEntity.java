@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Data
 @Entity
@@ -34,6 +35,17 @@ public class UserEntity {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
+
     private UserRole role;
+
+    private String email;
+
+    private String unoTag;
+
+    private Integer numberOfWins;
+
+    private Integer numberOfAppearances;
+
+    private Date registrationDate;
 
 }
