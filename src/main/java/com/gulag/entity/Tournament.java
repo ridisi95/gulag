@@ -1,7 +1,9 @@
 package com.gulag.entity;
 
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,13 +16,14 @@ import java.util.Date;
 @Entity
 @Table(name = "tournaments")
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Tournament {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String status;
-    private Date tournamentDate;
-    private String title;
+    Long id;
+    String status;
+    Date tournamentDate;
+    String title;
 
 }

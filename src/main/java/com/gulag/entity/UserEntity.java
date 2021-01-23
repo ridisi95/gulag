@@ -1,10 +1,8 @@
 package com.gulag.entity;
 
 import com.gulag.enums.UserRole;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,32 +18,33 @@ import java.util.Date;
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @Column(unique = true, nullable = false)
-    private String username;
+    String username;
 
     @ToString.Exclude
     @Column(nullable = false)
-    private String password;
+    String password;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
 
-    private UserRole role;
+    UserRole role;
 
-    private String email;
+    String email;
 
-    private String unoTag;
+    String unoTag;
 
-    private Integer numberOfWins;
+    Integer numberOfWins;
 
-    private Integer numberOfAppearances;
+    Integer numberOfAppearances;
 
-    private Date registrationDate;
+    Date registrationDate;
 
 }

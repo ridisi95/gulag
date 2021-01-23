@@ -1,17 +1,20 @@
 package com.gulag.entity.dto;
 
 import com.gulag.entity.UserEntity;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
 @Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserDto {
 
-    private Long id;
-    private String username;
-    private String email;
-    private String unoTag;
-    private Integer numberOfWins;
-    private Integer numberOfAppearances;
+    Long id;
+    String username;
+    String email;
+    String unoTag;
+    Integer numberOfWins;
+    Integer numberOfAppearances;
 
     public UserDto(UserEntity user) {
         this.id = user.getId();
