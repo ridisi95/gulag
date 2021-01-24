@@ -3,9 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import styles from 'styles/Home.module.css';
 import { startLoginAction } from 'store/actions/login';
+import useTranslation from 'next-translate/useTranslation';
+import { LOCALES } from 'src/config/locales';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Home(): ReactElement {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const router = useRouter();
 
   const isAuthenticated = useSelector(state => state.login.authenticated);
   const loading = useSelector(state => state.login.loading);
@@ -28,9 +34,15 @@ export default function Home(): ReactElement {
           <span>Authenticated</span>
         ) : (
           <button type="button" onClick={login}>
-            Login
+            {t('common:test')}
           </button>
         )}
+
+        {LOCALES.map(locale => (
+          <Link key={locale} href={router.asPath} locale={locale}>
+            <a>{locale}</a>
+          </Link>
+        ))}
       </main>
 
       <footer className={styles.footer}>
