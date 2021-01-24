@@ -8,6 +8,7 @@ module.exports = {
       node: {
         paths: ['./'],
       },
+      typescript: {},
       'babel-module': {},
     },
   },
