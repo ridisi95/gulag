@@ -24,7 +24,10 @@ target/
 # dependencies
 front-end/node_modules
 front-end/.pnp
+front-end/.next
 front-end.pnp.js
+front-end/package-lock.json
+front-end/.env
 
 front-end# testing
 front-end/coverage
