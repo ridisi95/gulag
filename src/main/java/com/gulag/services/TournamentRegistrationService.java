@@ -1,38 +1,33 @@
 package com.gulag.services;
 
 import com.gulag.entity.TournamentRegistration;
-import com.gulag.entity.dto.UserDto;
 import com.gulag.repos.TournamentRegistrationRepository;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
 @Service
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class TournamentRegistrationService {
 
-    private final TournamentRegistrationRepository tour;
-    private final UserService userService;
+    TournamentRegistrationRepository tour;
 
-    public List<UserDto> findAllUsersByTournamentId(Long tournamentId) {
-        List<TournamentRegistration> allUserIdByTournamentId = tour.findAllByTournamentId(tournamentId);
-        List<UserDto> users = new ArrayList<>();
-        for (TournamentRegistration temp : allUserIdByTournamentId) {
-            users.add(new UserDto(userService.findByUserId(temp.getUserId())));
-        }
-        return users;
+    public List<TournamentRegistration> findAllByTournamentId(Long tournamentId) {
+        return tour.findAllByTournamentId(tournamentId);
     }
 
     public TournamentRegistration registerTournament(TournamentRegistration registration) {
         if (registration != null) {
             Optional<TournamentRegistration> temp =
-                    tour.findTournamentRegistrationByUserIdAndTournamentId(registration.getUserId(),
-                            registration.getTournamentId());
+                    tour.findTournamentRegistrationByUserIdAndTournamentId(
+                            registration.getUser().getId(), registration.getTournamentId());
             if (temp.isEmpty()) {
                 return tour.save(registration);
             }

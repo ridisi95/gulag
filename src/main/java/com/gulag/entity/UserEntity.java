@@ -46,5 +46,4 @@ public class UserEntity {
     Integer numberOfAppearances;
 
     Date registrationDate;
-
 }

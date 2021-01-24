@@ -1,36 +1,39 @@
 package com.gulag.controller;
 
+import com.gulag.dto.TournamentRegistrationDto;
+import com.gulag.dto.UserDto;
 import com.gulag.entity.TournamentRegistration;
-import com.gulag.entity.dto.UserDto;
+import com.gulag.services.TournamentRegistrationDtoService;
 import com.gulag.services.TournamentRegistrationService;
+import com.gulag.services.UserDtoService;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
 @RestController
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequestMapping("/register")
 public class TournamentRegisterController {
 
-    private final TournamentRegistrationService registrationService;
+
+    TournamentRegistrationService registrationService;
+    UserDtoService userDtoService;
+    TournamentRegistrationDtoService registrationDtoService;
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "participants/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<UserDto> getParticipants(@PathVariable("id") Long tournamentId) {
-        return registrationService.findAllUsersByTournamentId(tournamentId);
+        return userDtoService.getAllParticipantOfTournamentRegistration(
+                registrationService.findAllByTournamentId(tournamentId));
+
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -41,15 +44,15 @@ public class TournamentRegisterController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<TournamentRegistration> findAllRegisters() {
-        return registrationService.findAll();
+    public List<TournamentRegistrationDto> findAllRegisters() {
+        return registrationDtoService.getAllTournaments(registrationService.findAll());
     }
 
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean deleteByUserIdAndTournamentId(
-            @RequestParam(name = "user") Long userId,
-            @RequestParam(name = "tour") Long tournamentId) {
+            @RequestParam Long userId,
+            @RequestParam Long tournamentId) {
         return registrationService.deleteRegistration(userId, tournamentId);
     }
 

@@ -1,7 +1,9 @@
 package com.gulag.config;
 
 import com.gulag.services.AuthUserService;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -16,9 +18,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @RequiredArgsConstructor
 @EnableConfigurationProperties
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final AuthUserService auth;
+    AuthUserService auth;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

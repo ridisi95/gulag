@@ -2,7 +2,9 @@ package com.gulag.services;
 
 import com.gulag.entity.UserEntity;
 import com.gulag.repos.UsersRepository;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -14,12 +16,14 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
 
-@Slf4j
+
 @Service
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequiredArgsConstructor
+@Slf4j
 public class AuthUserService implements UserDetailsService {
 
-    private final UsersRepository usersRepository;
+    UsersRepository usersRepository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
