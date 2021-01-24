@@ -8,9 +8,8 @@ import lombok.experimental.FieldDefaults;
 @Data
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TournamentRegistrationDto {
+public class TourRegDTO {
 
-    Long id;
     Long tournamentId;
-    UserDto user;
+    UserDTO user;
 }

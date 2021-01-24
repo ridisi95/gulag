@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Builder
 @Data
-public class Player {
+public class PlayerEntity {
 
     Integer id;
 

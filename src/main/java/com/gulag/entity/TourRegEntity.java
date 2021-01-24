@@ -1,31 +1,26 @@
 package com.gulag.entity;
 
+import com.gulag.relationship.TourRegRelationId;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Entity
 @Table(name = "tournament_registration")
 @NoArgsConstructor
+@IdClass(TourRegRelationId.class)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class TournamentRegistration {
+public class TourRegEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-
     Long tournamentId;
 
+    @Id
     @ManyToOne
     @JoinColumn(name = "user_id")
     UserEntity user;

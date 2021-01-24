@@ -1,6 +1,6 @@
 package com.gulag.mapper;
 
-import com.gulag.dto.UserDto;
+import com.gulag.dto.UserDTO;
 import com.gulag.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -12,8 +12,9 @@ import java.util.List;
 public interface UserEntityDtoMapper {
 
     @Mapping(target = "password", ignore = true)
-    UserDto userEntityToUserDto(UserEntity userEntity);
-    UserEntity userDtoToUserEntity(UserDto userDto);
+    UserDTO userEntityToUserDto(UserEntity userEntity);
+    @Mapping(target="id", source="userDto.id")
+    UserEntity userDtoToUserEntity(UserDTO userDto);
 
-    List<UserDto> listUserEntityToUserDto(List<UserEntity> entities);
+    List<UserDTO> listUserEntityToUserDto(List<UserEntity> entities);
 }

@@ -17,7 +17,7 @@ import java.util.Date;
 @Table(name = "tournaments")
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Tournament {
+public class TournamentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
