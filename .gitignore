@@ -24,6 +24,7 @@ target/
 # dependencies
 front-end/node_modules
 front-end/.pnp
+front-end/.next
 front-end.pnp.js
 
 front-end# testing
