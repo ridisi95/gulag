@@ -1,6 +1,6 @@
 package com.gulag.controller;
 
-import com.gulag.entity.Player;
+import com.gulag.entity.PlayerEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,12 +13,12 @@ import java.util.List;
 public class PlayerController {
 
     @GetMapping
-    public List<Player> getCustomers() {
+    public List<PlayerEntity> getCustomers() {
 
         //@TODO remove hardcode and use DB to get list of players
-        List<Player> players = Arrays.asList(
-                Player.builder().id(1).nickName("smol").build(),
-                Player.builder().id(2).nickName("stasyan").build());
+        List<PlayerEntity> players = Arrays.asList(
+                PlayerEntity.builder().id(1).nickName("smol").build(),
+                PlayerEntity.builder().id(2).nickName("stasyan").build());
         return players;
     }
 }
