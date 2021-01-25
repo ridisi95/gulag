@@ -9,11 +9,12 @@ import org.mapstruct.ReportingPolicy;
 import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
-public interface UserEntityDtoMapper {
+public interface UserEntityDTOMapper {
 
     @Mapping(target = "password", ignore = true)
-    UserDTO userEntityToUserDto(UserEntity userEntity);
-    UserEntity userDtoToUserEntity(UserDTO userDto);
-
-    List<UserDTO> listUserEntityToUserDto(List<UserEntity> entities);
+    UserDTO userEntityToUserDTO(UserEntity userEntity);
+    UserEntity userDTOToUserEntity(UserDTO userDto);
+    @Mapping(target = "password", ignore = true)
+    List<UserDTO> listUserEntitiesToUserDTOs(List<UserEntity> entities);
+    List<UserEntity> listUserDTOsToUserEntities(List<UserDTO> entities);
 }
