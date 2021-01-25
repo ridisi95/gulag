@@ -1,7 +1,10 @@
 package com.gulag.entity;
 
 import com.gulag.enums.UserRole;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Column;

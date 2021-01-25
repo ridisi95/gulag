@@ -13,7 +13,6 @@ public interface UserEntityDtoMapper {
 
     @Mapping(target = "password", ignore = true)
     UserDTO userEntityToUserDto(UserEntity userEntity);
-    @Mapping(target="id", source="userDto.id")
     UserEntity userDtoToUserEntity(UserDTO userDto);
 
     List<UserDTO> listUserEntityToUserDto(List<UserEntity> entities);

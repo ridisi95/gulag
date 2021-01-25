@@ -1,7 +1,9 @@
 package com.gulag.services;
 
+import com.gulag.dto.TourRegDTO;
 import com.gulag.dto.UserDTO;
 import com.gulag.entity.TourRegEntity;
+import com.gulag.mapper.TourRegDtoMapper;
 import com.gulag.mapper.UserEntityDtoMapper;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -18,15 +20,15 @@ import java.util.List;
 public class UserDtoService {
 
     @Autowired
-    UserEntityDtoMapper mapper;
+    TourRegDtoMapper mapper1;
 
     public List<UserDTO> getAllParticipantOfTournamentRegistration(
             List<TourRegEntity> tournaments) {
-        List<UserDTO> participants = new ArrayList<>();
-        for (TourRegEntity registration : tournaments) {
-            participants.add(mapper.userEntityToUserDto(registration.getUser()));
-        }
-        return participants;
+        List<TourRegDTO> tourRegDTOS = mapper1.mapListEntitiesToDTOs(tournaments);
+        List<UserDTO> userDTOS = new ArrayList<>();
+        for (TourRegDTO tourRegDTO : tourRegDTOS)
+            userDTOS.add(tourRegDTO.getUser());
+        return userDTOS;
     }
 
 }

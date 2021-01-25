@@ -4,7 +4,6 @@ import com.gulag.dto.TourRegDTO;
 import com.gulag.dto.UserDTO;
 import com.gulag.entity.TourRegEntity;
 import com.gulag.mapper.TourRegDtoMapper;
-import com.gulag.services.TourRegDtoService;
 import com.gulag.services.TourRegService;
 import com.gulag.services.UserDtoService;
 import lombok.AccessLevel;
@@ -28,7 +27,6 @@ public class TourRegController {
 
     TourRegService registrationService;
     UserDtoService userDtoService;
-    TourRegDtoService registrationDtoService;
 
     @Autowired
     TourRegDtoMapper mapper;
@@ -44,17 +42,17 @@ public class TourRegController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public TourRegEntity registerTournament(@RequestBody TourRegDTO registration) {
+    public TourRegDTO registerTournament(@RequestBody TourRegDTO registration) {
         log.info(registration.toString());
         TourRegEntity tourRegEntity = mapper.mapDTOToEntity(registration);
         log.info(tourRegEntity.toString());
-        return registrationService.registerTournament(tourRegEntity);
+        return mapper.mapEntityToDTO(registrationService.registerTournament(tourRegEntity));
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<TourRegDTO> findAllRegisters() {
-        return registrationDtoService.getAllTournaments(registrationService.findAll());
+        return mapper.mapListEntitiesToDTOs(registrationService.findAll());
     }
 
     @ResponseStatus(HttpStatus.OK)
