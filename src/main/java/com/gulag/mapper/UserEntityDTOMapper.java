@@ -13,8 +13,11 @@ public interface UserEntityDTOMapper {
 
     @Mapping(target = "password", ignore = true)
     UserDTO userEntityToUserDTO(UserEntity userEntity);
+    
     UserEntity userDTOToUserEntity(UserDTO userDto);
+    
     @Mapping(target = "password", ignore = true)
     List<UserDTO> listUserEntitiesToUserDTOs(List<UserEntity> entities);
+    
     List<UserEntity> listUserDTOsToUserEntities(List<UserDTO> entities);
 }
