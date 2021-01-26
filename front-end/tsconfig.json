@@ -4,12 +4,13 @@
     "baseUrl": ".",
     "paths": {
       "utils/*": ["./src/utils/*"],
-      "store/*": ["./src/store/*"]
+      "store/*": ["./src/store/*"],
+      "models/*": ["./models*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
