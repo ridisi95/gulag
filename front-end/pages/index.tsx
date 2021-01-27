@@ -7,14 +7,15 @@ import useTranslation from 'next-translate/useTranslation';
 import { LOCALES } from 'src/config/locales';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useSelectorTyped } from 'store/index';
 
 export default function Home(): ReactElement {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const router = useRouter();
 
-  const isAuthenticated = useSelector(state => state.login.authenticated);
-  const loading = useSelector(state => state.login.loading);
+  const isAuthenticated = useSelectorTyped(state => state.login.authenticated);
+  const loading = useSelectorTyped(state => state.login.loading);
 
   const login = useCallback(() => {
     dispatch(startLoginAction());
