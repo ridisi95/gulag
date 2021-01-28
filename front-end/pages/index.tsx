@@ -1,5 +1,5 @@
 import { ReactElement, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Head from 'next/head';
 import styles from 'styles/Home.module.css';
 import { startLoginAction } from 'store/actions/login';
@@ -11,7 +11,7 @@ import { useSelectorTyped } from 'store/index';
 
 export default function Home(): ReactElement {
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const router = useRouter();
 
   const isAuthenticated = useSelectorTyped(state => state.login.authenticated);
@@ -35,7 +35,7 @@ export default function Home(): ReactElement {
           <span>Authenticated</span>
         ) : (
           <button type="button" onClick={login}>
-            {t('common:test')}
+            {t('test')}
           </button>
         )}
 

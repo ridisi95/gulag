@@ -1,6 +1,4 @@
-import { TRANSITION } from 'models//theme';
-
-export const transition: TRANSITION = {
+export const transitions = {
   short: '.5s ease',
   standard: '1s ease',
 };

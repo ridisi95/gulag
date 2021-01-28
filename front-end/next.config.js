@@ -1,8 +1,7 @@
 const nextTranslate = require('next-translate');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
-module.exports = {
-  ...nextTranslate(),
+module.exports = nextTranslate({
   webpack(config, options) {
     const { dev, isServer } = options;
 
@@ -13,4 +12,4 @@ module.exports = {
 
     return config;
   },
-};
+});
