@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .ts,.tsx"
+    "lint": "eslint . --ext .ts,.tsx",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "eslint-import-resolver-typescript": "^2.3.0",
@@ -21,11 +23,16 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@storybook/addon-actions": "^6.1.15",
+    "@storybook/addon-essentials": "^6.1.15",
+    "@storybook/addon-links": "^6.1.15",
+    "@storybook/react": "^6.1.15",
     "@types/node": "^14.14.22",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
     "airbnb": "^0.0.2",
+    "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^7.18.0",
     "eslint-config-airbnb": "^18.2.1",
