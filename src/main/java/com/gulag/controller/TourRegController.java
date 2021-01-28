@@ -19,17 +19,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor=@__({@Autowired}))
 @RestController
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @RequestMapping("/register")
 public class TourRegController {
 
     TourRegService registrationService;
-
-    @Autowired
     TourRegDTOMapper tourRegMapper;
-    @Autowired
     UserEntityDTOMapper userMapper;
 
     @ResponseStatus(HttpStatus.OK)
