@@ -1,6 +1,6 @@
 package com.gulag.dto;
 
-import com.gulag.enums.TournamentRole;
+import com.gulag.enums.TournamentStatus;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -12,7 +12,7 @@ import java.util.Date;
 public class TournamentDTO {
 
     Long id;
-    TournamentRole status;
+    TournamentStatus status;
     Date tournamentDate;
     String title;
 }

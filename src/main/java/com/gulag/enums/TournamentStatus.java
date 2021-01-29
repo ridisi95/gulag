@@ -1,6 +1,6 @@
 package com.gulag.enums;
 
-public enum TournamentRole {
+public enum TournamentStatus {
     CREATED, STARTED, ENDED, CANCELED;
 
 }

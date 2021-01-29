@@ -1,7 +1,7 @@
 package com.gulag.services.impl;
 
 import com.gulag.entity.TournamentEntity;
-import com.gulag.enums.TournamentRole;
+import com.gulag.enums.TournamentStatus;
 import com.gulag.repos.TourRepository;
 import com.gulag.services.TournamentService;
 import lombok.AccessLevel;
@@ -36,7 +36,7 @@ public class TourServiceImpl implements TournamentService {
     }
 
     @Override
-    public TournamentEntity updateStatusOfTournament(Long tournamentId, TournamentRole status) {
+    public TournamentEntity updateStatusOfTournament(Long tournamentId, TournamentStatus status) {
         TournamentEntity tournamentById = findById(tournamentId);
         tournamentById.setStatus(status);
         return saveTournament(tournamentById);

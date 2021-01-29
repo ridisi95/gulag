@@ -1,6 +1,6 @@
 package com.gulag.entity;
 
-import com.gulag.enums.TournamentRole;
+import com.gulag.enums.TournamentStatus;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +23,7 @@ public class TournamentEntity {
     Long id;
     @GeneratedValue
     @Enumerated(EnumType.STRING)
-    TournamentRole status;
+    TournamentStatus status;
     @Column(nullable = false)
     Date tournamentDate;
     @Column(nullable = false)

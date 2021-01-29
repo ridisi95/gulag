@@ -2,7 +2,7 @@ package com.gulag.controller;
 
 import com.gulag.dto.TournamentDTO;
 import com.gulag.entity.TournamentEntity;
-import com.gulag.enums.TournamentRole;
+import com.gulag.enums.TournamentStatus;
 import com.gulag.mapper.TourEntityDTOMapper;
 import com.gulag.services.TournamentService;
 import lombok.AccessLevel;
@@ -39,7 +39,7 @@ public class TournamentController {
     @ResponseStatus(HttpStatus.CREATED)
     @PatchMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public TournamentDTO updateTournamentStatus(@RequestParam Long tournamentId,
-                                                @RequestParam TournamentRole status) {
+                                                @RequestParam TournamentStatus status) {
         return mapper.mapEntityToDTO(tournamentService.updateStatusOfTournament(tournamentId, status));
     }
 }
