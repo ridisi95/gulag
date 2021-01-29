@@ -10,7 +10,6 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -26,10 +25,7 @@ import java.util.stream.Collectors;
 public class TourRegController {
 
     TourRegService registrationService;
-
-    @Autowired
     TourRegDTOMapper tourRegMapper;
-    @Autowired
     UserEntityDTOMapper userMapper;
 
     @ResponseStatus(HttpStatus.OK)
@@ -45,7 +41,7 @@ public class TourRegController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public TourRegDTO registerTournament(@RequestBody TourRegDTO registration) {
         TourRegEntity tourRegEntity = tourRegMapper.mapDTOToEntity(registration);
-        return tourRegMapper.mapEntityToDTO(registrationService.registerTournament(tourRegEntity));
+        return tourRegMapper.mapEntityToDTO(registrationService.registerOnTournament(tourRegEntity));
     }
 
     @ResponseStatus(HttpStatus.OK)

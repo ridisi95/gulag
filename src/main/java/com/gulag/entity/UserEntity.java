@@ -37,7 +37,6 @@ public class UserEntity {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-
     UserRole role;
 
     String email;

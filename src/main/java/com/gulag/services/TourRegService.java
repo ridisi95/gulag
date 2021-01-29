@@ -8,7 +8,7 @@ public interface TourRegService {
 
     List<TourRegEntity> findAllByTournamentId(Long tournamentId);
 
-    TourRegEntity registerTournament(TourRegEntity registration);
+    TourRegEntity registerOnTournament(TourRegEntity registration);
 
     List<TourRegEntity> findAll();
 
