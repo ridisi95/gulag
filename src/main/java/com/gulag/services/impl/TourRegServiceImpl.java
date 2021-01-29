@@ -23,7 +23,7 @@ public class TourRegServiceImpl implements TourRegService {
         return tourRegRepository.findAllByTournamentId(tournamentId);
     }
 
-    public TourRegEntity registerTournament(TourRegEntity registration) {
+    public TourRegEntity registerOnTournament(TourRegEntity registration) {
         log.info("In Service: {}", registration);
         return tourRegRepository.save(registration);
     }

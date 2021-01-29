@@ -42,7 +42,7 @@ public class TourRegController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public TourRegDTO registerTournament(@RequestBody TourRegDTO registration) {
         TourRegEntity tourRegEntity = tourRegMapper.mapDTOToEntity(registration);
-        return tourRegMapper.mapEntityToDTO(registrationService.registerTournament(tourRegEntity));
+        return tourRegMapper.mapEntityToDTO(registrationService.registerOnTournament(tourRegEntity));
     }
 
     @ResponseStatus(HttpStatus.OK)
