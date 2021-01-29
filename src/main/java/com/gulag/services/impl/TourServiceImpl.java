@@ -34,4 +34,11 @@ public class TourServiceImpl implements TournamentService {
     public TournamentEntity findById(Long tournamentId) {
         return tourRepository.findById(tournamentId).orElseThrow(IllegalArgumentException::new);
     }
+
+    @Override
+    public TournamentEntity updateStatusOfTournament(Long tournamentId, TournamentRole status) {
+        TournamentEntity tournamentById = findById(tournamentId);
+        tournamentById.setStatus(status);
+        return saveTournament(tournamentById);
+    }
 }
