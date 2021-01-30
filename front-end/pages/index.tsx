@@ -1,5 +1,5 @@
 import { ReactElement, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Head from 'next/head';
 import styles from 'styles/Home.module.css';
 import { startLoginAction } from 'store/actions/login';
@@ -7,14 +7,15 @@ import useTranslation from 'next-translate/useTranslation';
 import { LOCALES } from 'src/config/locales';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useSelectorTyped } from 'store/index';
 
 export default function Home(): ReactElement {
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
   const router = useRouter();
 
-  const isAuthenticated = useSelector(state => state.login.authenticated);
-  const loading = useSelector(state => state.login.loading);
+  const isAuthenticated = useSelectorTyped(state => state.login.authenticated);
+  const loading = useSelectorTyped(state => state.login.loading);
 
   const login = useCallback(() => {
     dispatch(startLoginAction());
@@ -34,7 +35,7 @@ export default function Home(): ReactElement {
           <span>Authenticated</span>
         ) : (
           <button type="button" onClick={login}>
-            {t('common:test')}
+            {t('test')}
           </button>
         )}
 
