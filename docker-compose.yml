@@ -24,3 +24,12 @@ services:
       PGADMIN_DEFAULT_PASSWORD: gulagroot
     ports:
       - 80:80
+  backend:
+    build: ./
+    environment:
+      DB_HOST: postgres
+    container_name: gulag-backend
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
