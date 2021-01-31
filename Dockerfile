@@ -2,7 +2,7 @@ FROM maven:3.6.3-openjdk-15 AS task
 WORKDIR /usr/src/app/
 COPY src /usr/src/app/src
 COPY pom.xml /usr/src/app
-RUN mvn clean install
+RUN mvn clean install -DskipTests=true
 
 FROM openjdk:15
 WORKDIR /usr/src/app/
