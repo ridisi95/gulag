@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SliderWrapper } from 'components/Slider/style';
 import dynamic from 'next/dynamic';
 import { Settings } from 'react-slick';
+import { NoSSR } from 'src/wrappers/NoSSR';
 
 const Slider = dynamic(() => import('react-slick'), { ssr: false });
 
@@ -19,12 +20,14 @@ export const GulagSlider: React.FC<GulagSliderProps> = () => {
 
   useEffect(() => setServer(false), []);
 
-  return !isServer ? (
-    <SliderWrapper>
-      <Slider {...settings}>
-        <h3>1</h3>
-        <h3>2</h3>
-      </Slider>
-    </SliderWrapper>
-  ) : null;
+  return (
+    <NoSSR>
+      <SliderWrapper>
+        <Slider {...settings}>
+          <h3>1</h3>
+          <h3>2</h3>
+        </Slider>
+      </SliderWrapper>
+    </NoSSR>
+  );
 };
