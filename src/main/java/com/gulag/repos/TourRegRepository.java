@@ -1,6 +1,8 @@
 package com.gulag.repos;
 
 import com.gulag.entity.TourRegEntity;
+import com.gulag.entity.TournamentEntity;
+import com.gulag.enums.TournamentStatus;
 import com.gulag.relationship.TourRegRelationId;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -15,4 +17,8 @@ public interface TourRegRepository extends JpaRepository<TourRegEntity, TourRegR
 
     TourRegEntity findTournamentRegistrationByUserIdAndTournamentId
             (Long userId, Long tournamentId);
+
+    List<TourRegEntity> findAllByUser_IdAndTournament_Status(Long user_id, TournamentStatus tournament_status);
+
+    List<TourRegEntity> findAllByUser_Id(Long user_id);
 }

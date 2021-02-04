@@ -10,6 +10,6 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TourRegDTO {
 
-    Long tournamentId;
+    TournamentDTO tournament;
     UserDTO user;
 }
