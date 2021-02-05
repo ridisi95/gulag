@@ -92,27 +92,33 @@ export const SliderWrapper = styled.div`
   .slick-arrow.slick-hidden {
     display: none;
   }
+
   .slick-dots {
+    position: absolute;
+    bottom: 15px;
     width: 100%;
     padding: 0;
     margin: 0;
-    display: flex !important;
+    display: flex !important; // styles from library
     list-style: none;
     flex-direction: row;
     justify-content: center;
     margin-top: 1.125rem;
   }
+
   .slick-dots li {
-    background: grey;
+    background: ${props => props.theme.colors.muted};
     width: 0.625rem;
     height: 0.625rem;
     border-radius: 50%;
     margin: 0.3125rem;
     position: relative;
   }
+
   .slick-dots li.slick-active {
-    background: red;
+    background: ${props => props.theme.colors.warning};
   }
+
   .slick-dots li button {
     font-size: 0;
     position: absolute;
