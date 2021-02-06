@@ -5,6 +5,7 @@
     "paths": {
       "utils/*": ["./src/utils/*"],
       "store/*": ["./src/store/*"],
+      "components/*": ["./src/components/*"],
       "models/*": ["./models*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
