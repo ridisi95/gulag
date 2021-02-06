@@ -65,12 +65,17 @@ public class TourRegController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "tournaments", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<TournamentDTO> getTournamentByUser(@RequestParam Long userId) {
+        return tournamentMapper.mapListEntitiesToDTOs(registrationService.findAllTourRegByUser(userId).stream()
+                .map(TourRegEntity::getTournament).collect(Collectors.toList()));
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping(value = "tournaments/{status}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<TournamentDTO> getTournamentByUserAndStatus(
-            @RequestParam Long userId, @RequestParam(required = false) TournamentStatus status) {
-        List<TourRegEntity> tournaments = status != null
-                ? registrationService.findAllTourRegByUserAndStatus(userId, status)
-                : registrationService.findAllTourRegByUser(userId);
-        return tournamentMapper.mapListEntitiesToDTOs(tournaments.stream()
+            @RequestParam Long userId, @PathVariable TournamentStatus status) {
+        return tournamentMapper.mapListEntitiesToDTOs(
+                registrationService.findAllTourRegByUserAndStatus(userId, status).stream()
                 .map(TourRegEntity::getTournament).collect(Collectors.toList()));
     }
 
