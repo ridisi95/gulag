@@ -1,6 +1,7 @@
 package com.gulag.services.impl;
 
 import com.gulag.entity.TourRegEntity;
+import com.gulag.enums.TournamentStatus;
 import com.gulag.repos.TourRegRepository;
 import com.gulag.services.TourRegService;
 import lombok.AccessLevel;
@@ -34,5 +35,15 @@ public class TourRegServiceImpl implements TourRegService {
 
     public void deleteRegistration(Long userId, Long tournamentId) {
         tourRegRepository.delete(tourRegRepository.findTournamentRegistrationByUserIdAndTournamentId(userId, tournamentId));
+    }
+
+    @Override
+    public List<TourRegEntity> findAllTourRegByUserAndStatus(Long userId, TournamentStatus status) {
+        return tourRegRepository.findAllByUser_IdAndTournament_Status(userId, status);
+    }
+
+    @Override
+    public List<TourRegEntity> findAllTourRegByUser(Long userId) {
+        return tourRegRepository.findAllByUser_Id(userId);
     }
 }

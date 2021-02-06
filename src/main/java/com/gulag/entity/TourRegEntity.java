@@ -18,7 +18,9 @@ import java.io.Serializable;
 public class TourRegEntity implements Serializable {
 
     @Id
-    Long tournamentId;
+    @ManyToOne
+    @JoinColumn(name = "tournament_id")
+    TournamentEntity tournament;
 
     @Id
     @ManyToOne

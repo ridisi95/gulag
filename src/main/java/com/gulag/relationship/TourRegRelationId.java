@@ -10,6 +10,6 @@ import java.io.Serializable;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TourRegRelationId implements Serializable {
 
-    Long tournamentId;
+    Long tournament;
     Long user;
 }
