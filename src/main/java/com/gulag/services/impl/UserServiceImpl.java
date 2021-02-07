@@ -1,7 +1,7 @@
 package com.gulag.services.impl;
 
 import com.gulag.entity.UserEntity;
-import com.gulag.repos.UsersRepository;
+import com.gulag.repos.UserRepository;
 import com.gulag.services.UserService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -15,10 +15,10 @@ import org.springframework.stereotype.Service;
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class UserServiceImpl implements UserService {
 
-    UsersRepository usersRepository;
+    UserRepository userRepository;
 
     public UserEntity findByUserId(Long userId) {
-        return usersRepository.findById(userId).orElseThrow(IllegalArgumentException::new);
+        return userRepository.findById(userId).orElseThrow(IllegalArgumentException::new);
     }
 
 
