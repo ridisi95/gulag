@@ -27,7 +27,7 @@ public class PlayerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    Long id;
 
     @Column(name = "uno_number")
     BigInteger unoNumber;

@@ -31,7 +31,7 @@ public class MatchEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    Long id;
 
     @Column(name = "acti_match_id")
     BigInteger actiMatchId;
