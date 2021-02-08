@@ -1,7 +1,7 @@
 package com.gulag.services;
 
 import com.gulag.entity.UserEntity;
-import com.gulag.repos.UsersRepository;
+import com.gulag.repos.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -23,11 +23,11 @@ import java.util.List;
 @Slf4j
 public class AuthUserService implements UserDetailsService {
 
-    UsersRepository usersRepository;
+    UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        UserEntity userEntity = usersRepository.findByUsername(email).orElseThrow(() ->
+        UserEntity userEntity = userRepository.findByUsername(email).orElseThrow(() ->
                 new UsernameNotFoundException("User not found"));
         log.info(userEntity.toString());
         List<SimpleGrantedAuthority> authorities =

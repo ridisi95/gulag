@@ -16,9 +16,10 @@ public class PlayerController {
     public List<PlayerEntity> getCustomers() {
 
         //@TODO remove hardcode and use DB to get list of players
-        List<PlayerEntity> players = Arrays.asList(
-                PlayerEntity.builder().id(1).nickName("smol").build(),
-                PlayerEntity.builder().id(2).nickName("stasyan").build());
-        return players;
+//        List<PlayerEntity> players = Arrays.asList(
+//                PlayerEntity.builder().id(1).nickName("smol").build(),
+//                PlayerEntity.builder().id(2).nickName("stasyan").build());
+//        return players;
+        return null;
     }
 }

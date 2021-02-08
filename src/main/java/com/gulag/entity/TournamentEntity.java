@@ -9,6 +9,7 @@ import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,12 +22,17 @@ public class TournamentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
     @GeneratedValue
     @Enumerated(EnumType.STRING)
     TournamentStatus status;
+
     @Column(nullable = false)
     Date tournamentDate;
+
     @Column(nullable = false)
     String title;
 
+    @OneToMany(mappedBy = "tournament", cascade = CascadeType.ALL)
+    List<MatchEntity> matchEntityList;
 }
