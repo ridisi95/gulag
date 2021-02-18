@@ -4,7 +4,6 @@ import com.gulag.dto.TourRegDTO;
 import com.gulag.dto.TournamentDTO;
 import com.gulag.dto.UserDTO;
 import com.gulag.entity.TourRegEntity;
-import com.gulag.entity.TournamentEntity;
 import com.gulag.enums.TournamentStatus;
 import com.gulag.mapper.TourEntityDTOMapper;
 import com.gulag.mapper.TourRegDTOMapper;
