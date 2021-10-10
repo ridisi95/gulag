@@ -7,7 +7,13 @@ import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE,
+        componentModel = "spring",
+        uses = {
+                UserEntityDTOMapper.class,
+                MatchMapper.class,
+        }
+)
 public interface TourEntityDTOMapper {
 
     TournamentDTO mapEntityToDTO(

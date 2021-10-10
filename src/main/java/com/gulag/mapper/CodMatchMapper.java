@@ -23,6 +23,7 @@ public interface CodMatchMapper {
     @Mapping(source = "uno", target = "unoNumber")
     PlayerEntity playerToEntity (CodPlayerDTO codPlayerDTO);
 
+//  #FIXME refactor if has easier solution
     @AfterMapping
     default void mapMatchField (@MappingTarget MatchEntity matchEntity) {
         matchEntity.getPlayers().forEach(player -> player.setMatch(matchEntity));

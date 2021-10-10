@@ -15,6 +15,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import java.math.BigInteger;
 import java.util.Date;
 
 @Data
@@ -41,6 +43,8 @@ public class UserEntity {
 
     String email;
 
+    BigInteger unoNumber;
+
     String unoTag;
 
     Integer numberOfWins;
@@ -48,4 +52,8 @@ public class UserEntity {
     Integer numberOfAppearances;
 
     Date registrationDate;
+
+    String firstName;
+
+    String lastName;
 }

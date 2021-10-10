@@ -29,6 +29,11 @@ public class TourRegServiceImpl implements TourRegService {
         return tourRegRepository.save(registration);
     }
 
+    @Override
+    public TourRegEntity registerOnTournament(Long TournamentId, Long UserId) {
+        return null;
+    }
+
     public List<TourRegEntity> findAll() {
         return tourRegRepository.findAll();
     }

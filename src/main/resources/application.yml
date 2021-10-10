@@ -4,6 +4,10 @@ server:
   servlet:
     context-path: /api
 
+logging:
+  level:
+    root: info
+
 spring:
   data:
     rest:

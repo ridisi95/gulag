@@ -1,7 +1,8 @@
 package com.gulag.entity;
 
 import lombok.AccessLevel;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Column;
@@ -19,7 +20,8 @@ import static javax.persistence.CascadeType.MERGE;
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.REFRESH;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "players")
 @FieldDefaults(level = AccessLevel.PRIVATE)

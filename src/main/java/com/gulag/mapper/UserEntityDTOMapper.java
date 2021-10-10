@@ -7,17 +7,23 @@ import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
+import java.util.Set;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface UserEntityDTOMapper {
 
     @Mapping(target = "password", ignore = true)
-    UserDTO userEntityToUserDTO(UserEntity userEntity);
-    
-    UserEntity userDTOToUserEntity(UserDTO userDto);
+    UserDTO mapEntityToDTO(UserEntity userEntity);
     
     @Mapping(target = "password", ignore = true)
-    List<UserDTO> listUserEntitiesToUserDTOs(List<UserEntity> entities);
-    
-    List<UserEntity> listUserDTOsToUserEntities(List<UserDTO> entities);
+    List<UserDTO> mapEntityToDTO(List<UserEntity> entityList);
+
+    @Mapping(target = "password", ignore = true)
+    Set<UserDTO> mapEntityToDTO(Set<UserEntity> entitySet);
+
+    UserEntity mapDTOToEntity(UserDTO userDto);
+
+    List<UserEntity> mapDTOToEntity(List<UserDTO> dtoList);
+
+    Set<UserEntity> mapDTOToEntity(Set<UserDTO> dtoSet);
 }

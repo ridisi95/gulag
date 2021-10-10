@@ -2,6 +2,8 @@ package com.gulag.entity;
 
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.CascadeType;
@@ -15,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.math.BigInteger;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +27,8 @@ import static javax.persistence.CascadeType.MERGE;
 import static javax.persistence.CascadeType.PERSIST;
 import static javax.persistence.CascadeType.REFRESH;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "matches")
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -61,7 +66,13 @@ public class MatchEntity {
     @Column(name = "playercount")
     short playerCount;
 
-    @OneToMany(mappedBy = "match", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "match_id")
     List<PlayerEntity> players;
+
+    public void addPlayer(PlayerEntity playerEntity) {
+        players.add(playerEntity);
+        playerEntity.setMatch(this);
+    }
 }
 

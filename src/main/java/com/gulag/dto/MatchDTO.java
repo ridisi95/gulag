@@ -16,8 +16,6 @@ public class MatchDTO {
 
     BigInteger actiMatchId;
 
-    TournamentDTO tournament;
-
     Date startMatch;
 
     Date endMatch;
