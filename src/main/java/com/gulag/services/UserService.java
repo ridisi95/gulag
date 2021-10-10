@@ -6,5 +6,5 @@ public interface UserService {
 
     UserEntity findByUserId(Long userId);
 
-    UserEntity createUser(UserEntity userEntity);
+    UserEntity saveOrUpdate(UserEntity userEntity);
 }

@@ -1,5 +1,6 @@
 package com.gulag.advice;
 
+import com.gulag.exception.UpdateObjectException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -33,5 +34,12 @@ public class ErrorHandlingControllerAdvice {
             MethodArgumentNotValidException e) {
         return e.getBindingResult().getFieldErrors().stream().collect(
                 Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
+    }
+
+    @ExceptionHandler(UpdateObjectException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    Map<String, String> onUpdateObjectException(UpdateObjectException e) {
+        return Map.of("error", e.getMessage());
     }
 }

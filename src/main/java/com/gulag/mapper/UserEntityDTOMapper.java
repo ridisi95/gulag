@@ -9,6 +9,8 @@ import org.mapstruct.ReportingPolicy;
 import java.util.List;
 import java.util.Set;
 
+import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
+
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface UserEntityDTOMapper {
 
@@ -26,4 +28,13 @@ public interface UserEntityDTOMapper {
     List<UserEntity> mapDTOToEntity(List<UserDTO> dtoList);
 
     Set<UserEntity> mapDTOToEntity(Set<UserDTO> dtoSet);
+
+    default void safetyMapToEntity(UserDTO source, UserEntity target) {
+        target.setPassword(defaultIfBlank(source.getPassword(), source.getPassword()));
+        target.setEmail(defaultIfBlank(source.getEmail(), target.getEmail()));
+        target.setNumberOfWins(source.getNumberOfWins());
+        target.setNumberOfAppearances(source.getNumberOfAppearances());
+        target.setFirstName(source.getFirstName());
+        target.setLastName(source.getLastName());
+    }
 }
