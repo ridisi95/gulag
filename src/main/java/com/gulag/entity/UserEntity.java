@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,6 +24,7 @@ import java.util.Date;
 @Entity
 @Table(name = "users")
 @NoArgsConstructor
+@DynamicInsert
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserEntity {
 
@@ -37,14 +39,16 @@ public class UserEntity {
     @Column(nullable = false)
     String password;
 
-    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     UserRole role;
 
+    @Column(nullable = false)
     String email;
 
+    @Column(nullable = false)
     BigInteger unoNumber;
 
+    @Column(nullable = false)
     String unoTag;
 
     Integer numberOfWins;
