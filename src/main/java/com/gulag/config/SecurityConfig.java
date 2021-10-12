@@ -23,18 +23,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     AuthUserService auth;
 
+//    #TODO setup security config here and com.gulag.config.CoreConfig.corsConfigurer as well
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeRequests().anyRequest().authenticated()
-                .and().httpBasic()
-                .and().sessionManagement().disable();
+        http.csrf().disable();
+//                .authorizeRequests().anyRequest().authenticated()
+//                .and().httpBasic()
+//                .and().sessionManagement().disable();
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(this.auth);
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(this.auth);
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
