@@ -1,7 +1,8 @@
 package com.gulag.controller;
 
 import com.gulag.dto.UserDTO;
-import com.gulag.exception.UpdateObjectException;
+import com.gulag.entity.UserEntity;
+import com.gulag.facades.UserFacade;
 import com.gulag.mapper.UserEntityDTOMapper;
 import com.gulag.services.UserService;
 import com.gulag.validation.marker.OnCreate;
@@ -29,24 +30,20 @@ import javax.validation.Valid;
 public class UserController {
 
     UserEntityDTOMapper userMapper;
+    UserFacade userFacade;
     UserService userService;
 
     @PostMapping()
-    public ResponseEntity<UserDTO> registerUser(@Valid @Validated(OnCreate.class) @RequestBody UserDTO inputUserDTO) {
+    public ResponseEntity<UserDTO> registerUser(@Validated(OnCreate.class) @Valid @RequestBody UserDTO inputUserDTO) {
         var userEntity = userMapper.mapDTOToEntity(inputUserDTO);
-        var userDTO = userMapper.mapEntityToDTO(userService.saveOrUpdate(userEntity));
+        var userDTO = userMapper.mapEntityToDTO(userFacade.createUser(userEntity));
         return ResponseEntity.ok(userDTO);
     }
 
     @PutMapping()
-    public ResponseEntity<UserDTO> updateUser(@Valid @Validated(OnUpdate.class) @RequestBody UserDTO inputUserDTO) {
-        var userEntity = userService.findByUserId(inputUserDTO.getId());
-        if (userEntity == null) {
-            throw new UpdateObjectException("updating object not found id: " + inputUserDTO.getId());
-        }
-        userMapper.safetyMapToEntity(inputUserDTO, userEntity);
-        userService.saveOrUpdate(userEntity);
-        return ResponseEntity.ok(userMapper.mapEntityToDTO(userEntity));
+    public ResponseEntity<UserDTO> updateUser(@Validated(OnUpdate.class) @Valid @RequestBody UserDTO inputUserDTO) {
+        UserEntity outputEntity = userFacade.updateUser(userMapper.mapDTOToEntity(inputUserDTO));
+        return ResponseEntity.ok(userMapper.mapEntityToDTO(outputEntity));
     }
 
     @GetMapping()

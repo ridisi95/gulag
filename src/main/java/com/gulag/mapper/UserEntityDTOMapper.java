@@ -29,7 +29,7 @@ public interface UserEntityDTOMapper {
 
     Set<UserEntity> mapDTOToEntity(Set<UserDTO> dtoSet);
 
-    default void safetyMapToEntity(UserDTO source, UserEntity target) {
+    default void safetyMapToEntity(UserEntity source, UserEntity target) {
         target.setPassword(defaultIfBlank(source.getPassword(), source.getPassword()));
         target.setEmail(defaultIfBlank(source.getEmail(), target.getEmail()));
         target.setNumberOfWins(source.getNumberOfWins());

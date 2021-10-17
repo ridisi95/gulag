@@ -1,5 +1,6 @@
 package com.gulag.advice;
 
+import com.gulag.exception.DataNotFoundException;
 import com.gulag.exception.UpdateObjectException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -40,6 +41,13 @@ public class ErrorHandlingControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     Map<String, String> onUpdateObjectException(UpdateObjectException e) {
+        return Map.of("error", e.getMessage());
+    }
+
+    @ExceptionHandler(DataNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseBody
+    Map<String, String> onDataNotFoundException(DataNotFoundException e) {
         return Map.of("error", e.getMessage());
     }
 }

@@ -1,6 +1,6 @@
 package com.gulag.parsers;
 
-public interface CodJSONParser {
+public interface JSONParser {
 
     Object parse(String json);
 }

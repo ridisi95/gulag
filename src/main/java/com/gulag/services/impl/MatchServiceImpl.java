@@ -1,9 +1,9 @@
 package com.gulag.services.impl;
 
-import com.gulag.dto.CodMatchDTO;
+import com.gulag.dto.thirdparty.CodMatchDTO;
 import com.gulag.entity.MatchEntity;
 import com.gulag.mapper.CodMatchMapper;
-import com.gulag.parsers.CodJSONParser;
+import com.gulag.parsers.JSONParser;
 import com.gulag.repos.MatchRepository;
 import com.gulag.services.MatchService;
 import lombok.AccessLevel;
@@ -25,7 +25,7 @@ public class MatchServiceImpl implements MatchService {
     // It is roughly 1 mb
     static int MAX_IN_MEMORY_SIZE = 1 * 1024 * 1024;
 
-    CodJSONParser codJSONParser;
+    JSONParser codJSONMatchParser;
     CodMatchMapper codMatchMapper;
     MatchRepository matchRepository;
 
@@ -43,7 +43,7 @@ public class MatchServiceImpl implements MatchService {
                 .retrieve();
 
         String json = responseSpec.bodyToMono(String.class).block();
-        CodMatchDTO codMatchDTO = (CodMatchDTO)codJSONParser.parse(json);
+        CodMatchDTO codMatchDTO = (CodMatchDTO) codJSONMatchParser.parse(json);
 
         return  codMatchMapper.mapToEntity(codMatchDTO);
     }

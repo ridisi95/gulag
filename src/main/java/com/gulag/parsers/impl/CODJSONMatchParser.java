@@ -1,10 +1,11 @@
-package com.gulag.parsers;
+package com.gulag.parsers.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gulag.dto.CodMatchDTO;
-import com.gulag.dto.CodPlayerDTO;
+import com.gulag.dto.thirdparty.CodMatchDTO;
+import com.gulag.dto.thirdparty.CodPlayerDTO;
+import com.gulag.parsers.JSONParser;
 import com.jayway.jsonpath.JsonPath;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -16,9 +17,9 @@ import java.util.List;
 
 import static org.apache.commons.lang3.ClassUtils.PACKAGE_SEPARATOR;
 
+@Component("codJSONMatchParser")
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-@Component
-public class CodJSONMatchParser implements CodJSONParser {
+public class CODJSONMatchParser implements JSONParser {
 
     static String ROOT_JSON_PATH = "$.data.allPlayers[*]";
     static String FIRST_ELEMENT_JSON_PATH = "[0]";
@@ -26,7 +27,7 @@ public class CodJSONMatchParser implements CodJSONParser {
     @NonFinal
     String convertedJson;
 
-    public CodJSONMatchParser() {
+    public CODJSONMatchParser() {
         convertedJson = null;
     }
 
