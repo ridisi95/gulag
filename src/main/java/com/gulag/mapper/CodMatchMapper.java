@@ -1,7 +1,7 @@
 package com.gulag.mapper;
 
-import com.gulag.dto.CodMatchDTO;
-import com.gulag.dto.CodPlayerDTO;
+import com.gulag.dto.thirdparty.CodMatchDTO;
+import com.gulag.dto.thirdparty.CodPlayerDTO;
 import com.gulag.entity.MatchEntity;
 import com.gulag.entity.PlayerEntity;
 import org.mapstruct.AfterMapping;
