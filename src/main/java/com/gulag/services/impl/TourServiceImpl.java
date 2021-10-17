@@ -1,7 +1,8 @@
 package com.gulag.services.impl;
 
 import com.gulag.entity.TournamentEntity;
-import com.gulag.enums.TournamentStatus;
+import com.gulag.exception.DataNotFoundException;
+import com.gulag.mapper.TourEntityDTOMapper;
 import com.gulag.repos.TourRepository;
 import com.gulag.services.TournamentService;
 import lombok.AccessLevel;
@@ -19,6 +20,7 @@ import java.util.List;
 public class TourServiceImpl implements TournamentService {
 
     TourRepository tourRepository;
+    TourEntityDTOMapper tourEntityDTOMapper;
 
     @Override
     public TournamentEntity saveTournament(TournamentEntity tournamentEntity) {
@@ -32,13 +34,13 @@ public class TourServiceImpl implements TournamentService {
 
     @Override
     public TournamentEntity findById(Long tournamentId) {
-        return tourRepository.findById(tournamentId).orElseThrow(IllegalArgumentException::new);
+        return tourRepository.findById(tournamentId).orElseThrow(DataNotFoundException::new);
     }
 
     @Override
-    public TournamentEntity updateStatusOfTournament(Long tournamentId, TournamentStatus status) {
-        TournamentEntity tournamentById = findById(tournamentId);
-        tournamentById.setStatus(status);
-        return saveTournament(tournamentById);
+    public TournamentEntity updateStatusOfTournament(TournamentEntity input) {
+        TournamentEntity output = findById(input.getId());
+        tourEntityDTOMapper.mapToEntity(input, output);
+        return saveTournament(output);
     }
 }

@@ -33,6 +33,6 @@ public class UserFacadeImpl implements UserFacade {
             throw new UpdateObjectException("updating object not found id: " + inputEntity.getId());
         }
         userMapper.safetyMapToEntity(inputEntity, userEntity);
-        return userService.saveOrUpdate(inputEntity);
+        return userService.saveOrUpdate(userEntity);
     }
 }

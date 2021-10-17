@@ -7,7 +7,6 @@ import com.gulag.entity.PlayerEntity;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
 
 import java.util.Date;
 
@@ -25,7 +24,7 @@ public interface CodMatchMapper {
 
 //  #FIXME refactor if has easier solution
     @AfterMapping
-    default void mapMatchField (@MappingTarget MatchEntity matchEntity) {
+    default void mapMatchField (MatchEntity matchEntity) {
         matchEntity.getPlayers().forEach(player -> player.setMatch(matchEntity));
     }
 }

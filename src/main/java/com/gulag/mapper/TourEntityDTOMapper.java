@@ -3,6 +3,7 @@ package com.gulag.mapper;
 import com.gulag.dto.TournamentDTO;
 import com.gulag.entity.TournamentEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
@@ -24,4 +25,6 @@ public interface TourEntityDTOMapper {
 
     List<TournamentDTO> mapListEntitiesToDTOs
             (List<TournamentEntity> tournamentEntities);
+
+    void mapToEntity(TournamentEntity source, @MappingTarget TournamentEntity target);
 }
