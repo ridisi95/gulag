@@ -1,4 +1,4 @@
-package com.gulag.dto;
+package com.gulag.dto.thirdparty;
 
 import lombok.AccessLevel;
 import lombok.Builder;

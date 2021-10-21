@@ -4,12 +4,12 @@ import com.gulag.dto.TourRegDTO;
 import com.gulag.dto.TournamentDTO;
 import com.gulag.dto.UserDTO;
 import com.gulag.entity.TourRegEntity;
-import com.gulag.entity.TournamentEntity;
 import com.gulag.enums.TournamentStatus;
 import com.gulag.mapper.TourEntityDTOMapper;
 import com.gulag.mapper.TourRegDTOMapper;
 import com.gulag.mapper.UserEntityDTOMapper;
 import com.gulag.services.TourRegService;
+import io.swagger.annotations.ApiOperation;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -36,17 +36,20 @@ public class TourRegController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "participants/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<UserDTO> getParticipantsInTournament(@PathVariable("id") Long tournamentId) {
-        return userMapper.listUserEntitiesToUserDTOs(
+        return userMapper.mapEntityToDTO(
                 registrationService.findAllByTournamentId(tournamentId)
                         .stream().map(TourRegEntity::getUser).collect(Collectors.toList()));
 
     }
 
     @ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation(value = "register new user on certain tournament")
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public TourRegDTO registerTournament(@RequestBody TourRegDTO registration) {
-        TourRegEntity tourRegEntity = tourRegMapper.mapDTOToEntity(registration);
-        return tourRegMapper.mapEntityToDTO(registrationService.registerOnTournament(tourRegEntity));
+    public TourRegDTO registerTournament(@RequestParam Long tournamentId, @RequestParam Long userId) {
+//        TourRegEntity tourRegEntity = tourRegMapper.mapDTOToEntity(registration);
+//        return tourRegMapper.mapEntityToDTO(registrationService.registerOnTournament(tourRegEntity));
+//        TourRegEntity tourRegEntity = new TourRegEntity(tournamentId, userId);
+        return null;
     }
 
     @ResponseStatus(HttpStatus.OK)

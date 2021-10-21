@@ -1,7 +1,6 @@
 package com.gulag.services;
 
 import com.gulag.entity.TournamentEntity;
-import com.gulag.enums.TournamentStatus;
 
 import java.util.List;
 
@@ -13,6 +12,6 @@ public interface TournamentService {
 
     TournamentEntity findById(Long tournamentId);
 
-    TournamentEntity updateStatusOfTournament(Long tournamentId, TournamentStatus status);
+    TournamentEntity updateStatusOfTournament(TournamentEntity tournamentEntity);
 
 }

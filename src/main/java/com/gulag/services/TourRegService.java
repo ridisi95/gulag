@@ -11,6 +11,10 @@ public interface TourRegService {
 
     TourRegEntity registerOnTournament(TourRegEntity registration);
 
+    TourRegEntity registerOnTournament(Long TournamentId, Long UserId);
+
+    //TODO useless method should be removed
+    @Deprecated
     List<TourRegEntity> findAll();
 
     void deleteRegistration(Long userId, Long tournamentId);

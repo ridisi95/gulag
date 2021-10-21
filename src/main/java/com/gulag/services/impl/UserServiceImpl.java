@@ -18,8 +18,12 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     public UserEntity findByUserId(Long userId) {
-        return userRepository.findById(userId).orElseThrow(IllegalArgumentException::new);
+        return userRepository.findById(userId).orElse(null);
     }
 
+    @Override
+    public UserEntity saveOrUpdate(UserEntity userEntity) {
+        return userRepository.save(userEntity);
+    }
 
 }

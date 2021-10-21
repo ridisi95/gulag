@@ -1,13 +1,12 @@
 package com.gulag.mapper;
 
-import com.gulag.dto.CodMatchDTO;
-import com.gulag.dto.CodPlayerDTO;
+import com.gulag.dto.thirdparty.CodMatchDTO;
+import com.gulag.dto.thirdparty.CodPlayerDTO;
 import com.gulag.entity.MatchEntity;
 import com.gulag.entity.PlayerEntity;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
 
 import java.util.Date;
 
@@ -23,8 +22,9 @@ public interface CodMatchMapper {
     @Mapping(source = "uno", target = "unoNumber")
     PlayerEntity playerToEntity (CodPlayerDTO codPlayerDTO);
 
+//  #FIXME refactor if has easier solution
     @AfterMapping
-    default void mapMatchField (@MappingTarget MatchEntity matchEntity) {
+    default void mapMatchField (MatchEntity matchEntity) {
         matchEntity.getPlayers().forEach(player -> player.setMatch(matchEntity));
     }
 }
